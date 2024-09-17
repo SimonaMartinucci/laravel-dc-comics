@@ -4,9 +4,9 @@
 
 <div class="container">
 
-    <h2>ADD A NEW COMIC!</h2>
+    <h2 class="my-4">ADD A NEW COMIC!</h2>
 
-    <form action="{{ route('comics.store') }}" method="POST">
+    <form action="{{ route('comics.store') }}" method="POST" class="mb-4">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>

@@ -13,7 +13,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::all();
+        $comics = Comic::orderBy('name')->get();
         return view('comics.index', compact('comics'));
     }
 
@@ -34,6 +34,7 @@ class ComicController extends Controller
 
         $newComic = new Comic();
         $newComic->name = $data['name'];
+        $newComic->slug = Helper::generateSlug($data['name'], Comic::class);
         $newComic->description = $data['description'];
         $newComic->thumb = $data['thumb'];
         $newComic->price = $data['price'];
@@ -87,6 +88,9 @@ class ComicController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $comic = Comic::find($id);
+        $comic->delete();
+        
+        return redirect()->route('comics.index');
     }
 }
