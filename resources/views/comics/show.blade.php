@@ -4,6 +4,12 @@
 
 <div class="container">
 
+    @if(session('edited'))
+    <div class="alert alert-success" role="alert">
+        {{ session('edited') }}
+    </div>
+    @endif
+
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
